@@ -1,5 +1,5 @@
 import { Slot } from "expo-router";
 
-export default function LayoutSesion() {
+export default function SignIn() {
     return <Slot />
 }
