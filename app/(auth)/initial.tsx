@@ -4,11 +4,11 @@ import { Stack, Link } from "expo-router";
 export default function InitialMenu() {
     return (
         <View style={style.container}>
-            <Stack.Screen options={{headerShown: false}} />
+            <Stack.Screen options={{headerShown: false}}/>
             <Text style={{marginBottom: 5}}>Imagen salvage aparece</Text>
-            <Link href='/sign-in'>
+            <Link href={'/sign-in'}  asChild>
             <Pressable style={style.button}>
-                <Text>Iniciar Sesion</Text>
+                <Text style={style.text}>Iniciar Sesion</Text>
             </Pressable>
             </Link>
             <Link href="">
@@ -35,6 +35,10 @@ const style = StyleSheet.create({
         width: 150,
         height: 25,
         paddingVertical: 2,
+        textAlign: "center",
+        backgroundColor: "#c732b0"
+    },
+    text: {
         textAlign: "center"
     }
 })
