@@ -1,11 +1,40 @@
-import { View, Text } from "react-native";
-import { Stack } from "expo-router";
+import { View, Text, Pressable, StyleSheet } from "react-native";
+import { Stack, Link } from "expo-router";
 
 export default function InitialMenu() {
     return (
-        <View>
+        <View style={style.container}>
             <Stack.Screen options={{headerShown: false}} />
-            <Text> Gola que tal</Text>
+            <Text style={{marginBottom: 5}}>Imagen salvage aparece</Text>
+            <Link href='/sign-in'>
+            <Pressable style={style.button}>
+                <Text>Iniciar Sesion</Text>
+            </Pressable>
+            </Link>
+            <Link href="">
+            <Pressable style={style.button}>
+                <Text>Suscribirse</Text>
+            </Pressable>
+            </Link>
         </View>
     )
 }
+
+
+
+const style = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
+    },
+    button: {
+        borderWidth: 1,
+        marginBottom: 5,
+        borderRadius: 25,
+        width: 150,
+        height: 25,
+        paddingVertical: 2,
+        textAlign: "center"
+    }
+})
