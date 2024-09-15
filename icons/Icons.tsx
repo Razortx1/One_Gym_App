@@ -11,7 +11,7 @@ export const Home = () => {
 }
 
 export const Ajustes = () => {
-    return <FontAwesome name="cog" size={24} color="black" />
+    return <FontAwesome name="user" size={24} color="black" />
 }
 
 export const Calendario = () => {
