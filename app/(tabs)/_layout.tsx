@@ -1,7 +1,7 @@
 import { Redirect, Tabs } from "expo-router";
 import { Home , Calendario, Pago, User} from "../../components/icons/Icons";
 
-export default function IndexLayout() {
+export default function TabLayout() {
     const hola = true
     if (!hola) {
         return <Redirect href="/initial" />
