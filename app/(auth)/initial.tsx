@@ -1,9 +1,10 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { Stack, Link } from "expo-router";
+import { Screen } from "../../components/Screen";
 
 export default function InitialMenu() {
     return (
-        <View style={style.container}>
+        <Screen>
             <Stack.Screen options={{headerShown: false}}/>
             <Text style={{marginBottom: 5}}>Imagen salvage aparece</Text>
             <Link href={'/sign-in'}  asChild>
@@ -16,18 +17,13 @@ export default function InitialMenu() {
                 <Text>Suscribirse</Text>
             </Pressable>
             </Link>
-        </View>
+        </Screen>
     )
 }
 
 
 
 const style = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
-    },
     button: {
         borderWidth: 1,
         marginBottom: 5,
