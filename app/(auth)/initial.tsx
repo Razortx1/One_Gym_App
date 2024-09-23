@@ -32,7 +32,7 @@ const style = StyleSheet.create({
         height: 25,
         paddingVertical: 2,
         textAlign: "center",
-        backgroundColor: "#c732b0"
+        backgroundColor: "#E600C1"
     },
     text: {
         textAlign: "center"

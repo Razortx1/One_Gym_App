@@ -2,7 +2,7 @@ import { FontAwesome } from "@expo/vector-icons";
 
 
 export const Ajuste = (props:any) => {
-    return <FontAwesome name="cog" size={24} color="black" {... props} style={{marginRight: 5}}/>
+    return <FontAwesome name="cog" size={24} color="white" {... props} style={{marginRight: 5}}/>
 }
 
 

@@ -6,7 +6,7 @@ import { Screen } from "../../components/Screen";
 export default function SignIn() {
     return(
         <Screen>
-            <Stack.Screen options={{headerTitle: "Iniciar Sesion"}}/>
+            <Stack.Screen options={{headerTitle: "Iniciar Sesion",headerTintColor:"white" , headerStyle: {backgroundColor: "#671350"}}}/>
             <TextInput style={style.textInput}/>
             <TextInput style={style.textInput}/>
             <Link href={{pathname: '/'}}>
@@ -28,7 +28,7 @@ const style = StyleSheet.create({
         height: 25,
         paddingVertical: 2,
         textAlign: "center",
-        backgroundColor: "#c732b0"
+        backgroundColor: "#E600C1"
     },
     textInput: {
         borderWidth: 1,

@@ -3,10 +3,10 @@ import { Screen } from "../components/Screen";
 import { Stack } from "expo-router";
 
 export default function Ajustes() {
-    return (
-        <Screen>
-            <Stack.Screen options={{headerShown: true, title:""}} />
-            <Text> Ajustes </Text>
-        </Screen>
-    )
+  return (
+    <Screen>
+      <Stack.Screen options={{ headerShown: true, title: "" }} />
+      <Text> Ajustes </Text>
+    </Screen>
+  );
 }

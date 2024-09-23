@@ -10,13 +10,14 @@ export default function TabLayout() {
       <Tabs
         screenOptions={{
           headerTitle: "",
+          headerStyle: {backgroundColor: "#671350"}
         }}
       >
         <Tabs.Screen
           name="index"
           options={{
             title: "",
-            tabBarActiveTintColor: "",
+            tabBarActiveTintColor: "#FF90ED",
             tabBarIcon: ({ color }) => <Home color={color} />,
           }}
         />
@@ -24,7 +25,7 @@ export default function TabLayout() {
           name="horario"
           options={{
             title: "",
-            tabBarActiveTintColor: "",
+            tabBarActiveTintColor: "#FF90ED",
             tabBarIcon: ({ color }) => <Calendario color={color} />,
           }}
         />
@@ -32,7 +33,7 @@ export default function TabLayout() {
           name="pagos"
           options={{
             title: "",
-            tabBarActiveTintColor: "",
+            tabBarActiveTintColor: "#FF90ED",
             tabBarIcon: ({ color }) => <Pago color={color} />,
           }}
         />
@@ -40,7 +41,7 @@ export default function TabLayout() {
           name="userview"
           options={{
             title: "",
-            tabBarActiveTintColor: "",
+            tabBarActiveTintColor: "#FF90ED",
             tabBarIcon: ({ color }) => <User color={color} />,
           }}
         />
