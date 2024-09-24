@@ -1,18 +1,28 @@
-import { Text, View, StyleSheet } from "react-native";
+/**
+ * Archivo que contiene la pagina principal
+ */
 
-export default function Login() {
+
+
+/**
+ * @import
+ * Se importa Screen del archivo encontrado en components
+ * Se importa Text desde la libreria React Native
+ */
+
+import { Text } from "react-native";
+import { Screen } from "../../components/Screen";
+
+/**
+ * @function Index
+ * Es la funcion que renderiza la vista que se veria al inicializar la APP
+ * @returns
+ * Retorna solamente un texto de Idenx
+*/
+export default function Index() {
     return (
-        <View style={style.container}>
+        <Screen>
             <Text>Index</Text>
-        </View>
+        </Screen>
     )
 }
-
-
-const style = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center"
-    }
-})
