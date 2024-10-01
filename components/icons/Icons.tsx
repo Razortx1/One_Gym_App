@@ -16,7 +16,7 @@ import { FontAwesome } from "@expo/vector-icons";
  * Se retorna el icono para los ajustes, indicando tambien un prop para el color logrando asi que el color no sea estatico
  */
 export const Ajuste = (props:any) => {
-    return <FontAwesome name="cog" size={24} color="white" {... props} style={{marginRight: 5}}/>
+    return <FontAwesome name="cog" size={24} color="white" {... props} style={{marginRight: 10}}/>
 }
 
 /**

@@ -9,9 +9,10 @@
  * - Stack y Link de expo-router
  * - Screen, un componente creado exclusivamente para esta APP
  */
-import { TextInput, StyleSheet, Pressable, Text } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import { Stack, Link } from "expo-router";
 import { Screen } from "../../components/Screen";
+import { Button, TextInput } from "react-native-paper";
 
 export default function SignIn() {
   /**
@@ -33,17 +34,27 @@ export default function SignIn() {
     <Screen>
       <Stack.Screen
         options={{
-          headerTitle: "Iniciar Sesion",
+          headerTitle: "Iniciar Sesión",
           headerTintColor: "white",
           headerStyle: { backgroundColor: "#671350" },
         }}
       />
-      <TextInput style={style.textInput} />
-      <TextInput style={style.textInput} secureTextEntry />
-      <Link href={{ pathname: "/" }}>
-        <Pressable style={style.button}>
-          <Text> Pagina de Inicio </Text>
-        </Pressable>
+      <TextInput
+        mode="flat"
+        style={style.textInput}
+        label="Ingrese Rut"
+        autoFocus
+      />
+      <TextInput
+        mode="flat"
+        style={style.textInput}
+        label="Ingrese Contraseña"
+        secureTextEntry
+      />
+      <Link href="/" asChild>
+        <Button mode="contained" buttonColor="#671350">
+          Iniciar Sesion
+        </Button>
       </Link>
     </Screen>
   );
@@ -55,19 +66,11 @@ export default function SignIn() {
 
 const style = StyleSheet.create({
   button: {
-    borderWidth: 1,
-    marginTop: 5,
-    borderRadius: 25,
-    width: 150,
-    height: 25,
-    paddingVertical: 2,
-    textAlign: "center",
-    backgroundColor: "#E600C1",
+    marginVertical: 5,
   },
   textInput: {
-    borderWidth: 1,
-    marginTop: 6,
-    borderRadius: 30,
-    paddingHorizontal: 5,
+    height: 50,
+    width: 200,
+    marginVertical: 5,
   },
 });
