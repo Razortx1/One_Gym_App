@@ -33,7 +33,7 @@ export default function UserView() {
                 <Ajuste />
             </Pressable>
             </Link>}} />
-            <Text> Usuario </Text>
+            <Text> Aqui viene algo :D </Text>
         </Screen>
     )
 }

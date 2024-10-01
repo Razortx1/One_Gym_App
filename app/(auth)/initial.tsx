@@ -4,16 +4,17 @@
 
 /**
  * @import
- * Apartado de imports, importando asi el componente Text, Pressable, StyleSheet desde la libreria de React Native
+ * Apartado de imports, importando asi el componente Text desde la libreria de React Native
  * importando tambien el componente Stack, siendo importado solamente para poder estilar mas adelante, ademas del componente Link
  * con el proposito de realizar los cambios hacia las vistas de la APP
  * Tambien se importo un componente, creado para este proyecto, llamado Screen.
  *
  * Para mas info sobre Screen, abrir archivo llamado Screen.tsx.
  */
-import { Text, Pressable, StyleSheet } from "react-native";
+import { Text } from "react-native";
 import { Stack, Link } from "expo-router";
 import { Screen } from "../../components/Screen";
+import { Button } from "react-native-paper";
 
 export default function InitialMenu() {
   /**
@@ -35,35 +36,19 @@ export default function InitialMenu() {
       <Stack.Screen options={{ headerShown: false }} />
       <Text style={{ marginBottom: 5 }}>Imagen salvage aparece</Text>
       <Link href={"/sign-in"} asChild>
-        <Pressable style={style.button}>
-          <Text style={style.text}>Iniciar Sesion</Text>
-        </Pressable>
+        <Button
+          mode="contained"
+          buttonColor="#671350"
+          style={{ marginVertical: 5 }}
+        >
+          Iniciar Sesión
+        </Button>
       </Link>
-      <Link href="">
-        <Pressable style={style.button}>
-          <Text>Suscribirse</Text>
-        </Pressable>
-      </Link>
+        <Button mode="contained" buttonColor="#671350">
+        <Link href="">
+          <Text> Suscribirse </Text>
+          </Link>
+        </Button>
     </Screen>
   );
 }
-
-/**
- * Creacion para un estilo que solo se usará en esta vista.
- */
-
-const style = StyleSheet.create({
-  button: {
-    borderWidth: 1,
-    marginBottom: 5,
-    borderRadius: 25,
-    width: 150,
-    height: 25,
-    paddingVertical: 2,
-    textAlign: "center",
-    backgroundColor: "#E600C1",
-  },
-  text: {
-    textAlign: "center",
-  },
-});
