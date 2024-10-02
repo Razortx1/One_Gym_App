@@ -53,7 +53,7 @@ export default function TabLayout() {
           name="index"
           options={{
             title: "",
-            tabBarActiveTintColor: "#FF90ED",
+            tabBarActiveTintColor: "#dca3a3",
             tabBarIcon: ({ color }) => <Home color={color} />,
           }}
         />
@@ -61,7 +61,7 @@ export default function TabLayout() {
           name="horario"
           options={{
             title: "",
-            tabBarActiveTintColor: "#FF90ED",
+            tabBarActiveTintColor: "#dca3a3",
             tabBarIcon: ({ color }) => <Calendario color={color} />,
           }}
         />
@@ -69,7 +69,7 @@ export default function TabLayout() {
           name="pagos"
           options={{
             title: "",
-            tabBarActiveTintColor: "#FF90ED",
+            tabBarActiveTintColor: "#dca3a3",
             tabBarIcon: ({ color }) => <Pago color={color} />,
           }}
         />
@@ -77,7 +77,7 @@ export default function TabLayout() {
           name="userview"
           options={{
             title: "",
-            tabBarActiveTintColor: "#FF90ED",
+            tabBarActiveTintColor: "#dca3a3",
             tabBarIcon: ({ color }) => <User color={color} />,
           }}
         />
