@@ -63,3 +63,11 @@ export const Calendario = (props:any) => {
 export const Pago = (props:any) => {
     return <FontAwesome name="dollar" size={24} color="black" {... props}/>
 }
+
+export const ArrowLeft = (props:any) =>{
+    return <FontAwesome name="arrow-left" size={24} color="black" {...props}/>
+}
+
+export const ArrowRight = (props:any) =>{
+    return <FontAwesome name="arrow-right" size={24} color="black" {...props} />
+}
