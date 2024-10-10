@@ -1,13 +1,14 @@
 {
   "expo": {
     "name": "One-Gym-App",
+    "scheme": "One-Gym-App",
     "slug": "One-Gym-App",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/one_gym.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -16,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/one_gym.png",
         "backgroundColor": "#ffffff"
       }
     },

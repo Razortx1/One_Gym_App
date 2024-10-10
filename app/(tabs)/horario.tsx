@@ -3,7 +3,6 @@ import { StyleSheet, SafeAreaView, View } from "react-native";
 import { Agenda } from "react-native-calendars";
 import { PaperProvider, Text } from "react-native-paper";
 import moment from "moment";
-
 export default function Horario() {
   const [currentWeekStart, setCurrentWeekStart] = useState(moment().startOf('week').format("YYYY-MM-DD"));
   const [currentDate, setCurrentDate] = useState(moment().format("YYYY-MM-DD"));
@@ -12,6 +11,7 @@ export default function Horario() {
   const items = {
     "2024-10-01": [
       { name: "Clase 1", data: "Clase de manejo para vehículos a 2 ruedas" },
+      { name: "Clase 8", data: "Clase de manejo para vehículos a 2 ruedas" }
     ],
     "2024-10-02": [
       { name: "Clase 2", data: "Clase de manejo para vehículos a 4 ruedas" },
@@ -93,7 +93,7 @@ export default function Horario() {
           )}
           renderEmptyDate={() => (
             <View style={styles.emptyItem}>
-              <Text>No tenemos clases disponibles</Text>
+              <Text>No hay clases disponibles</Text>
             </View>
           )}
           // Mostrar solo el día seleccionado
@@ -139,8 +139,9 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: "#dca3a3",
     padding: 10,
+    marginTop: 20,
     borderRadius: 5,
-    marginBottom: 10,
+    marginBottom: 0,
   },
   emptyItem: {
     backgroundColor: "#f0f0f0",

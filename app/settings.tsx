@@ -26,7 +26,7 @@ import { Stack } from "expo-router";
 export default function Ajustes() {
   return (
     <Screen>
-      <Stack.Screen options={{ headerShown: true, title: "" }} />
+      <Stack.Screen options={{headerShown: true, headerTitle: "Ajustes" }} />
       <Text> Ajustes </Text>
     </Screen>
   );

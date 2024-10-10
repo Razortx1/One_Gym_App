@@ -11,7 +11,7 @@
  *
  * Para mas info sobre Screen, abrir archivo llamado Screen.tsx.
  */
-import { Text } from "react-native";
+import { Image, Text } from "react-native";
 import { Stack, Link } from "expo-router";
 import { Screen } from "../../components/Screen";
 import { Button } from "react-native-paper";
@@ -34,7 +34,7 @@ export default function InitialMenu() {
   return (
     <Screen>
       <Stack.Screen options={{ headerShown: false }} />
-      <Text style={{ marginBottom: 5 }}>Imagen salvage aparece</Text>
+      <Image source={require('../../assets/one_gym.png')} style={{width: 375}}></Image>
       <Link href={"/sign-in"} asChild>
         <Button
           mode="contained"

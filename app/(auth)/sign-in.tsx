@@ -40,13 +40,14 @@ export default function SignIn() {
         }}
       />
       <TextInput
-        mode="flat"
+        mode="outlined"
         style={style.textInput}
-        label="Ingrese Rut"
+        label="Ingrese Email"
+
         autoFocus
       />
       <TextInput
-        mode="flat"
+        mode="outlined"
         style={style.textInput}
         label="Ingrese Contraseña"
         secureTextEntry
