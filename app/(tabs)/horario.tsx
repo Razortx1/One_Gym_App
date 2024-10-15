@@ -1,35 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, SafeAreaView, View } from "react-native";
 import { Agenda } from "react-native-calendars";
 import { PaperProvider, Text } from "react-native-paper";
 import moment from "moment";
+
 export default function Horario() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const url = "http://172.20.10.3:3000/clases"; 
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const json = await response.json();
+        console.log("Datos recibido:", json); //Para visualizar posbiles errores
+        setData(json);
+      } catch (error) {
+        console.error("Error de busqueda:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const [currentWeekStart, setCurrentWeekStart] = useState(moment().startOf('week').format("YYYY-MM-DD"));
   const [currentDate, setCurrentDate] = useState(moment().format("YYYY-MM-DD"));
 
-  // Items de ejemplo para la Agenda
-  const items = {
-    "2024-10-01": [
-      { name: "Clase 1", data: "Clase de manejo para vehículos a 2 ruedas" },
-      { name: "Clase 8", data: "Clase de manejo para vehículos a 2 ruedas" }
-    ],
-    "2024-10-02": [
-      { name: "Clase 2", data: "Clase de manejo para vehículos a 4 ruedas" },
-    ],
-    "2024-10-03": [
-      { name: "Clase 3", data: "Clase de manejo para vehículos a 4 ruedas" },
-    ],
-    "2024-10-04": [
-      { name: "Clase 4", data: "Clase de manejo para vehículos a 4 ruedas" },
-    ],
-    "2024-10-05": [
-      { name: "Clase 5", data: "Clase de manejo para vehículos a 4 ruedas" },
-    ],
-    "2024-10-06": [],
-    "2024-10-07": [],
+  const Items = (data:any) => {
+    const items = {};
+    if (data) {
+      data.forEach((clase:any) => {
+        const date = moment(clase.fecha).format("YYYY-MM-DD");
+        if (!items[date]) {
+          items[date] = [];
+        }
+        items[date].push({
+          id: clase.id,
+          name: clase.nombre, 
+          description: clase.descripcion, 
+        });
+      });
+    }
+    return items;
   };
 
-  // Función para obtener el rango de días de la semana a partir de una fecha
+  const items = loading ? {} : Items(data);
+
   const getWeekDates = (startDate:any) => {
     const startOfWeek = moment(startDate).startOf('week');
     const dates = [];
@@ -39,24 +61,20 @@ export default function Horario() {
     return dates;
   };
 
-  // Obtener las fechas de la semana actual
   const weekDates = getWeekDates(currentWeekStart);
 
-  // Función para cambiar a la semana anterior
   const handlePrevWeek = () => {
     const prevWeek = moment(currentWeekStart).subtract(1, 'weeks').format("YYYY-MM-DD");
     setCurrentWeekStart(prevWeek);
-    setCurrentDate(prevWeek);  // Cambiar el día seleccionado
+    setCurrentDate(prevWeek);
   };
 
-  // Función para cambiar a la semana siguiente
   const handleNextWeek = () => {
     const nextWeek = moment(currentWeekStart).add(1, 'weeks').format("YYYY-MM-DD");
     setCurrentWeekStart(nextWeek);
-    setCurrentDate(nextWeek);  // Cambiar el día seleccionado
+    setCurrentDate(nextWeek);
   };
 
-  // Asegurarse de que todos los días tengan entradas, aunque estén vacías
   const ensureAllDaysHaveEntries = (items:any, weekDates:any) => {
     const newItems = { ...items };
     weekDates.forEach((date:any) => {
@@ -74,21 +92,19 @@ export default function Horario() {
       <PaperProvider>
         <Text variant="titleLarge" style={styles.title}>Clases disponibles</Text>
 
-        {/* Flechas para cambiar semanas */}
         <View style={styles.arrowContainer}>
           <Text onPress={handlePrevWeek} style={styles.arrow}>{"<"}</Text>
           <Text style={styles.weekTitle}>{`Semana del ${moment(currentWeekStart).format('DD MMM')} al ${moment(currentWeekStart).add(6, 'days').format('DD MMM')}`}</Text>
           <Text onPress={handleNextWeek} style={styles.arrow}>{">"}</Text>
         </View>
 
-        {/* Mantener el calendario de Agenda */}
         <Agenda
           items={agendaItems}
           selected={currentDate}
           renderItem={(item:any) => (
-            <View style={styles.item}>
-              <Text>{item.name}</Text>
-              <Text>{item.data}</Text>
+            <View style={styles.item} key={item.id}>
+              <Text style={{ marginTop: 10 }}>Clase: {item.name}</Text>
+              <Text style={{ marginTop: 10 }}>Descripción: {item.description}</Text>
             </View>
           )}
           renderEmptyDate={() => (
@@ -96,7 +112,6 @@ export default function Horario() {
               <Text>No hay clases disponibles</Text>
             </View>
           )}
-          // Mostrar solo el día seleccionado
           showOnlySelectedDayItems
           theme={{
             selectedDayBackgroundColor: '#dca3a3',
@@ -115,6 +130,7 @@ export default function Horario() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginRight: 10
   },
   title: {
     textAlign: 'center',
