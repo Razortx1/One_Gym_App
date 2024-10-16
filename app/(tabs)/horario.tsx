@@ -33,9 +33,16 @@ export default function Horario() {
   const [currentDate, setCurrentDate] = useState(moment().format("YYYY-MM-DD"));
 
   const Items = (data:any) => {
-    const items = {};
+    const items:any = {};
     if (data) {
-      data.forEach((clase:any) => {
+      const sortedData = data.sort((a: any, b: any) => {
+        const timeA = moment(a.hora_inicio, "HH:mm");
+        const timeB = moment(b.hora_inicio, "HH:mm");
+        return timeA.isBefore(timeB) ? -1 : timeA.isAfter(timeB) ? 1 : 0;
+      });
+
+
+      sortedData.forEach((clase:any) => {
         const date = moment(clase.fecha).format("YYYY-MM-DD");
         if (!items[date]) {
           items[date] = [];
@@ -44,6 +51,8 @@ export default function Horario() {
           id: clase.id,
           name: clase.nombre, 
           description: clase.descripcion, 
+          inicio: clase.hora_inicio,
+          fin: clase.hora_fin
         });
       });
     }
@@ -105,6 +114,7 @@ export default function Horario() {
             <View style={styles.item} key={item.id}>
               <Text style={{ marginTop: 10 }}>Clase: {item.name}</Text>
               <Text style={{ marginTop: 10 }}>Descripción: {item.description}</Text>
+              <Text style={{ marginTop: 10, alignSelf:"center"}}>Inicio: {item.inicio}  |  Fin: {item.fin}</Text>
             </View>
           )}
           renderEmptyDate={() => (
@@ -154,6 +164,7 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: "#dca3a3",
+    flex:2,
     padding: 10,
     marginTop: 20,
     borderRadius: 5,
