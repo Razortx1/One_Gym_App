@@ -10,12 +10,12 @@
  * Se importa Pressable y Text desde la libreria React Native
  */
 
-import { FlatList, Pressable, Text } from "react-native";
+import { FlatList, Pressable } from "react-native";
 import { Link, Stack } from "expo-router";
 import { Ajuste } from "../../components/icons/Icons";
 import { Screen } from "../../components/Screen";
 import { useEffect, useState } from "react";
-import { ActivityIndicator } from "react-native-paper";
+import { ActivityIndicator, Avatar, Card, Text } from "react-native-paper";
 
 /**
  * @function UserView
@@ -38,7 +38,9 @@ export default function UserView() {
   const [data, setData] = useState<User[]>([]);
   const getUser = async () => {
     try {
-      const user = await fetch("https://jsonplaceholder.typicode.com/users?id=1");
+      const user = await fetch(
+        "https://jsonplaceholder.typicode.com/users?id=1"
+      );
       const json = await user.json();
       setData(json);
     } catch (error) {
@@ -64,15 +66,52 @@ export default function UserView() {
         }}
       />
       {isLoading ? (
-        <ActivityIndicator color="black" size="large" />
+        <ActivityIndicator color="black" size="large"/>
       ) : (
         <FlatList
           data={data}
           keyExtractor={({ id }) => id}
           renderItem={({ item }) => (
-            <Text>
-              {item.name}, {item.email}
-            </Text>
+            <>
+              <Avatar.Image
+                size={100}
+                source={require("../../assets/favicon.png")}
+                style={{ marginVertical: 5, alignSelf: "center" }}
+              />
+              <Card style={{ marginVertical: 5 }}>
+                <Card.Title title="Datos de Usuario" />
+                <Card.Content>
+                  <Text variant="titleLarge">Nombres:</Text>
+                  <Text variant="bodyLarge">{item.name}</Text>
+                  <Text variant="titleLarge">Apellido Paterno</Text>
+                  <Text variant="bodyLarge">Garcia</Text>
+                  <Text variant="titleLarge">Apellido Materno</Text>
+                  <Text variant="bodyLarge">Rojas</Text>
+                  <Text variant="titleLarge">Edad</Text>
+                  <Text variant="bodyLarge">24</Text>
+                </Card.Content>
+              </Card>
+              <Card style={{ marginVertical: 5 }}>
+                <Card.Content>
+                  <Text variant="titleLarge">Estado Civil:</Text>
+                  <Text variant="bodyLarge">Soltera</Text>
+                  <Text variant="titleLarge">Fecha de Nacimiento</Text>
+                  <Text variant="bodyLarge">15/03/2000</Text>
+                </Card.Content>
+              </Card>
+              <Card style={{ marginVertical: 5 }}>
+                <Card.Content>
+                  <Text variant="titleLarge">Ocupación:</Text>
+                  <Text variant="bodyLarge">Programadora Full Stack</Text>
+                  <Text variant="titleLarge">Dirección:</Text>
+                  <Text variant="bodyLarge">Copiapó</Text>
+                  <Text variant="titleLarge">Telefono:</Text>
+                  <Text variant="bodyLarge">+569 4582 4531</Text>
+                  <Text variant="titleLarge">Telefono Emergencia:</Text>
+                  <Text variant="bodyLarge">+569 4582 4531</Text>
+                </Card.Content>
+              </Card>
+            </>
           )}
         />
       )}

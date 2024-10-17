@@ -63,3 +63,7 @@ export const Calendario = (props:any) => {
 export const Pago = (props:any) => {
     return <FontAwesome name="dollar" size={24} color="black" {... props}/>
 }
+
+export const Formulario = (props:any) => {
+    return <FontAwesome name="wpforms" size={24} color="black" {...props}/>
+}

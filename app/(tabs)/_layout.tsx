@@ -9,7 +9,7 @@
  * - Home, Calendario, Pago y User desde una carpeta creada para este proyecto, usada principalmente para almacenaje de iconos.
  */
 import { Redirect, Tabs } from "expo-router";
-import { Home, Calendario, Pago, User } from "../../components/icons/Icons";
+import { Home, Calendario, Pago, User, Formulario } from "../../components/icons/Icons";
 
 export default function TabLayout() {
   /**
@@ -70,7 +70,7 @@ export default function TabLayout() {
           options={{
             title: "",
             tabBarActiveTintColor: "#FF90ED",
-            tabBarIcon: ({ color }) => <Pago color={color} />,
+            tabBarIcon: ({ color }) => <Formulario color={color} />,
           }}
         />
         <Tabs.Screen
